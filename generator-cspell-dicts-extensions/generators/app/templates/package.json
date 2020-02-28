@@ -5,10 +5,12 @@
     "displayName": "<%= displayName %>",
     "icon": "images/SpellCheck.png",
     "preview": true,
+    "private": true,
     "publisher": "streetsidesoftware",
     "engines": {
-        "vscode": "^1.14.0"
+        "vscode": "^1.41.0"
     },
+    "extensionKind": ["workspace"],
     "categories": [
         "Linters",
         "Other"
@@ -61,18 +63,11 @@
     "scripts": {
         "clean": "rimraf out",
         "clean-build": "npm run clean && npm run build",
+        "publish-extension": "vsce publish",
         "vscode:prepublish": "npm run build",
         "build": "tsc -p ./",
+        "prepare": "npm run build",
         "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^5.2.0",
-        "@types/node": "^8.10.17",
-        "mocha": "^5.2.0",
-        "rimraf": "^2.6.1",
-        "typescript": "^2.8.3",
-        "vscode": "^1.1.18"
-    },
+        "test": "node ../../node_modules/vscode/bin/test"
+    }
 }
